@@ -9,9 +9,21 @@ function App() {
 }
 function ReverseText(props){
 	return (
-		<h2> {props.value.split("").reverse().join("")} </h2>
+		<p> {props.value.split("").reverse().join("")} </p>
 		);
 
+}
+
+function AllCaps(props){
+	return(
+		<p> {props.value.toUpperCase()}  </p> 
+	);
+}
+
+function LargerFont(props){
+	return(
+	<p style={{fontSize: '300%'}}> {props.value} </p>
+	)
 }
 
 
@@ -28,13 +40,16 @@ class TextForm extends React.Component{
 		return (
 			<>
 				<div className='main-text'>
-				<h3>Enter text here</h3>
+				<h2>Input</h2>
           		<input type="text" Placeholder="Enter text here..." />
 				</div>
 
-				<h3> tranformed! </h3>
+				<h2> transformed! </h2>
 				<div className='transform-text'>
-				
+					<ReverseText value='lorem'/>
+					<AllCaps value='ipsum'/>
+					<LargerFont value='hodor'/>
+
 
 				</div>
 			</>
