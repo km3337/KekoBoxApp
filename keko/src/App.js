@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import './TextForm.css';
 
 function App() {
   return (
@@ -7,23 +8,29 @@ function App() {
   
     );
 }
+
 function ReverseText(props){
 	return (
-		<p> {props.value.split("").reverse().join("")} </p>
+		<>
+		<p style={{border:'5 px color black'}}> {props.value.split("").reverse().join("")} </p>
+		</>
 		);
-
-}
+	}
 
 function AllCaps(props){
 	return(
+	<>
 		<p> {props.value.toUpperCase()}  </p> 
+	</>
 	);
 }
 
 function LargerFont(props){
 	return(
+	<>
 	<p style={{fontSize: '300%'}}> {props.value} </p>
-	)
+	</>
+	);
 }
 
 
@@ -36,19 +43,25 @@ class TextForm extends React.Component{
     	this.state = {value:''};
   	}
 
+  	handleChange = (e) => {
+    this.setState({value: e.currentTarget.value});
+  	}
+
+
 	render() {
 		return (
 			<>
 				<div className='main-text'>
 				<h2>Input</h2>
-          		<input type="text" Placeholder="Enter text here..." />
+          		<input type="text" Placeholder="Enter text here..." onChange={this.handleChange} />
 				</div>
 
-				<h2> transformed! </h2>
+				
 				<div className='transform-text'>
-					<ReverseText value='lorem'/>
-					<AllCaps value='ipsum'/>
-					<LargerFont value='hodor'/>
+					<h2> transformed! </h2>
+					<ReverseText value={this.state.value}/>
+					<AllCaps value={this.state.value}/>
+					<LargerFont value={this.state.value}/>
 
 
 				</div>
@@ -59,7 +72,7 @@ class TextForm extends React.Component{
 
 	}
 
-}
+};
 
 
 export default App;
